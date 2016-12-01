@@ -1,0 +1,25 @@
+<div class="game-title">
+  Cat Manager =(^-.-^)=
+  <span style="float: right">Cash: ${{ cash | number:'1.2-2' }}</span>
+</div>
+
+<div
+  [class.cat-hunting]="cat.hunting"
+  class="cat-detail" *ngFor="let cat of cats">
+    <div style="height: 30px;">
+      <span>{{ cat.name }} (${{ cat.yield | number:'1.2-2' }})</span>
+      <progress min="0" [max]="cat.duration" [value]="cat.elapsed"></progress>
+    </div>
+    
+    <div>
+        <button 
+          [disabled]="cat.hunting"
+          (click)="hunt(cat)">hunt</button>
+        <button
+          [disabled]="cash <= cat.train_cost"
+          (click)="train(cat)">train (${{ cat.train_cost | number:'1.2-2' }})</button>
+        <span class="cat-duration">{{ cat.duration | number:'1.0-0' }} sec</span>
+    </div>
+</div>
+
+<button (click)="nextTurn()">next turn</button>
