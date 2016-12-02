@@ -1,4 +1,8 @@
 /* Styles go here */
+body {
+  background-color: lightgrey;
+}
+
 .game-title {
     margin-bottom: 16px;
     font-size: 1.5em;
